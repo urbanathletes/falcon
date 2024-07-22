@@ -1,11 +1,11 @@
-@extends('master2')
+@extends('master3')
 
 @section('content')
 <div class="container-md p0">
     <div class="signup-content h100vh">
         <div class="signup-desc">
             <div class="signup-desc-content" style="padding-left: 30px;padding-right: 30px;text-align:center;">
-                <img src="assets/img/logo.png" alt="" class="img-fluid img-logo">
+                <img src="assets/img/logo falcon red_Website.png" alt="" class="img-fluid img-logo">
                 <!-- <img src="assets/img/bg-guest-profile.jpg" alt="" class="img-fluid" style="min-height: 100vh;"> -->
             </div>
         </div>

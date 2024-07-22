@@ -47,6 +47,7 @@
         max-width: 100%;
         word-wrap: break-word;
         letter-spacing: 1px;
+        color:#ffffff;
     }
 
     @media only screen and (max-device-width: 640px) {
@@ -83,6 +84,7 @@
             font-size: 16px;
             word-wrap: break-word;
             letter-spacing: 1px;
+            color: #ffffff;
         }
 
     }
@@ -94,7 +96,7 @@
         <div class="container-sm">
             <div class="row">
                 <div class="col-sm-7">
-                    <img src="assets/img/logo-FW-samator-presale.png" alt="" class="img-logo" style="margin-bottom: 20px; width: 653px; height: 69px; object-fit: contain; filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));">
+                    <img src="assets/img/logo falcon putih_Website.png" alt="" class="img-logo" style="margin-bottom: 20px; width: 653px; height: 69px; object-fit: contain; filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));">
                     <br>
                     <div class="spacer-p0"></div>
                     <p class="jul-one" style="line-height: 1.2;text-transform: uppercase;">
@@ -107,14 +109,14 @@
                     <br>
                     <div class="spacer-p0"></div>
                     <p class="desc-promo" style="font-style: Poppins; font-weight: 700;">
-                        FITNESSWORKS adalah GYM pertama yang menerapkan Time Based Membership dari Urban Athletes Management, yang keuntungannya anda yang hanya ngegym 1x seminggu tidak perlu membayar seperti yang ngegym 5x seminggu. Hanya selama
+                        FALCON FITNESS BOX community that leverages technology and functional training to create high-intensity group workouts that are efficient, fun, and results-oriented. Hanya selama
                         <class="form-title" style="text-align: left; font-weight: 700;color: #FECC09; font-style: poppins;">
                             Periode Presale Gabung Member mulai Rp 225,500 All Access Fitnessworks & Unlimited.
                     </p>
                     <div class="spacer"></div>
                     <div class="ig" style="position: relative;">
                         <a href="https://www.instagram.com/fitnessworks.id/?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D">
-                            <img src="assets/img/icon-IG-LP.png" alt="" style="position: absolute; bottom: 0; right: 0; width: 100%; height: 100%; margin-bottom: 20px; object-fit: contain;">
+                            <img src="assets/img/icon IG wensite.png" alt="" style="position: absolute; bottom: 0; right: 0; width: 100%; height: 100%; margin-bottom: 20px; object-fit: contain;">
                     </div>
                     </a>
                 </div>
@@ -156,7 +158,7 @@
                             <h2 class="form-title">Hanya selama Periode Presale<br>Gabung Member mulai Rp 225k + <br>All Access Fitnessworks & Unlimited.
                             </h2>
                             <div class="form-group">
-                                <label for="full_name" class="normal" style="font-weight: 600;margin-left: 5px;">Nama
+                                <label for="full_name" class="normal" style="font-weight: 600;margin-left: 5px;color:#ffffff;">Nama
                                     Lengkap<span style="color:red;"> *</span></label>
                                 <input type="text" class="form-input" name="name" id="name" placeholder="" required />
                                 @if ($errors->has('name'))
@@ -164,14 +166,14 @@
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label for="email" class="normal" style="font-weight: 600;margin-left: 5px;">Email<span style="color:red;"> *</span></label>
+                                <label for="email" class="normal" style="font-weight: 600;margin-left: 5px;color:#ffffff;">Email<span style="color:red;"> *</span></label>
                                 <input type="email" class="form-input" name="email" id="email" placeholder="" required />
                                 @if ($errors->has('email'))
                                 <span class="text-danger">{{ $errors->first('email') }}</span>
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label for="phone" class="normal" style="font-weight: 600;margin-left: 5px;">No
+                                <label for="phone" class="normal" style="font-weight: 600;margin-left: 5px;color:#ffffff;">No
                                     Handphone<span style="color:red;"> *</span></label>
                                 <input type="text" class="form-input number" name="phone" id="phone" placeholder="" required />
                                 @if ($errors->has('phone'))
@@ -179,7 +181,7 @@
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label for="club_id" class="normal" style="font-weight: 600;margin-left: 5px;">Club yang
+                                <label for="club_id" class="normal" style="font-weight: 600;margin-left: 5px;color:#ffffff;">Club yang
                                     dipilih<span style="color:red;"> *</span></label>
                                 <!-- <select class="form-select" id="club_id" name="club_id" data-placeholder="Pilih club" <?= ($withClub ? "disabled" : "") ?>>
                                     <?php foreach ($club as $r => $v) { ?>
@@ -201,7 +203,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="time_call" class="normal" style="font-weight: 600;margin-left: 5px;">Pilih
+                                <label for="time_call" class="normal" style="font-weight: 600;margin-left: 5px;color:#ffffff;">Pilih
                                     waktu untuk dihubungi<span style="color:red;"> *</span></label>
                                 <input style="display:none;" type="text" class="form-input" name="time_call" id="time_call" placeholder="" />
                                 <div class="row">
