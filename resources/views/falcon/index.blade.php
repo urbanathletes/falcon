@@ -223,7 +223,7 @@
                             </div>
                             <br>
                             <div class="form-group">
-                                <input type="button" name="benefit" id="benefit" class="button-benefit" value="Member Benefit" />
+                                <!-- <input type="button" name="benefit" id="benefit" class="button-benefit" value="Member Benefit" /> -->
                                 <input type="submit" name="submit" id="real-submit" class="form-submit" value="Daftar Pre-sale" />
                                 <!-- <input type="submit" name="submit" id="real-submit" class="form-submit" style="display:none;" /> -->
                             </div>

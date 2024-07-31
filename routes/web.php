@@ -2,13 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdsController;
+use App\Http\Controllers\PromoFalconController;
 use App\Http\Controllers\SpecialController;
 use App\Http\Controllers\RemoveAccountController;
 use App\Http\Controllers\PromoSamatorController;
 use App\Http\Controllers\RefferalController;
 
 // Route::resource('/', AdsController::class);
-Route::resource('/', PromoSamatorController::class);
+Route::resource('/', PromoFalconController::class);
 
 //special deal
 // Route::resource('/special-deal', SpecialController::class);
@@ -24,6 +25,6 @@ Route::resource('/', PromoSamatorController::class);
 // });
 // Route::resource('/refferal', RefferalController::class);
 
-//Samator
-Route::resource('/samator', PromoSamatorController::class);
-Route::post('/order', [PromoSamatorController::class, 'order']);
+//falcon
+Route::resource('/falcon', PromoFalconController::class);
+Route::post('/order', [PromoFalconController::class, 'order']);
