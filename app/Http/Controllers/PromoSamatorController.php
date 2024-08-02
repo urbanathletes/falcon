@@ -28,7 +28,7 @@ class PromoSamatorController extends Controller
             $club = DB::table('ua_mst_clubs')->whereRaw('org_id = 13')->whereRaw('deletedAt is null and is_deleted = 0')->get();
         }
 
-        return view('samator.index', compact('club', 'withClub'));
+        return view('falcon.index', compact('club', 'withClub'));
     }
 
     public function store(Request $request)
@@ -53,15 +53,14 @@ class PromoSamatorController extends Controller
         if (isset($_GET['type'])) {
             $validateData['type_promo'] = $_GET['type'];
         } else {
-            $validateData['type_promo'] = 'samator';
+            $validateData['type_promo'] = 'falcon';
         }
         $validateData['sales_id'] = '232';
         $validateData['createdAt'] = date('Y-m-d H:i:s');
         $validateData['updatedAt'] = date('Y-m-d H:i:s');
 
-        if ($validateData['club_id'] == 14) { //Samator
-            $packageMembershipId = 1021;
-
+        if ($validateData['club_id'] == 17) { //Samator
+            $packageMembershipId = 856;
         }
 
         $foundMember = DB::table('ua_mst_members')->whereRaw('email = "' . $validateData['email'] . '"')->whereRaw('deletedAt is null')->first();
@@ -82,23 +81,23 @@ class PromoSamatorController extends Controller
                 ->whereRaw('package_membership_id is not null')
                 ->first();
             if (isset($foundMemberPackage)) {
-                return back()->with('error', 'Maaf anda tidak memenuhi syarat & ketentuan untuk membeli promo samator.');
+                return back()->with('error', 'Maaf anda tidak memenuhi syarat & ketentuan untuk membeli promo fa.');
             }
 
             $foundTransaction = DB::table('ua_orders')
                 ->whereRaw('member_id = ' . $foundMember->id)
-                ->whereRaw('package_membership_id in (1021)')
+                ->whereRaw('package_membership_id in (856)')
                 ->whereRaw('status = "paid"')
                 ->first();
             if (isset($foundTransaction)) {
-                return back()->with('error', 'Maaf anda sudah pernah membeli promo samator.');
+                return back()->with('error', 'Maaf anda sudah pernah membeli promo falcon.');
             }
         }
 
         $packageMembership = DB::table('ua_package_memberships as a')
             ->selectRaw('a.*, c.name as shift_name')
             ->join('ua_mst_shifts as c', 'c.id', '=', 'a.shift_id')
-            ->where('a.id', '=', $packageMembershipId)
+            ->where('id', '=', $packageMembershipId)
             ->first();
 
         $response = Http::withBasicAuth('keys', 'secret')
@@ -132,7 +131,7 @@ class PromoSamatorController extends Controller
             };*/
         }
 
-        return view('samator.checkout', compact('packageMembership', 'leadsId', 'data', 'salesList'));
+        return view('falcon.checkout', compact('packageMembership', 'leadsId', 'data', 'salesList'));
     }
 
     private function getUrl($key = NULL)
@@ -179,7 +178,7 @@ class PromoSamatorController extends Controller
 
             if ($response->successful()) {
                 $url = $data['xendit_invoice_url'];
-                return view('samator.order', compact('url'));
+                return view('falcon.order', compact('url'));
             } elseif ($response->failed()) {
             }
         }

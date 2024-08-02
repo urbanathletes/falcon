@@ -59,8 +59,8 @@ class PromoFalconController extends Controller
         $validateData['createdAt'] = date('Y-m-d H:i:s');
         $validateData['updatedAt'] = date('Y-m-d H:i:s');
 
-        if ($validateData['club_id'] == 14) { //Samator
-            $packageMembershipId = 1021;
+        if ($validateData['club_id'] == 17) { //Samator
+            $packageMembershipId = 856;
 
         }
 
