@@ -502,6 +502,18 @@ body {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
+
+.signup-content-second{
+    background: #000000;
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -o-border-radius: 15px;
+    -ms-border-radius: 15px;
+    padding: 30px 55px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
 .form-group {
     overflow: hidden;
     margin-bottom: 20px;
@@ -689,6 +701,11 @@ input[type=checkbox]:not(old):checked+label>span:before {
     .signup-content {
         padding: 50px 25px;
     }
+
+    .signup-content-second {
+        padding: 50px 25px;
+    }
+
 }
 
 .table-rule {

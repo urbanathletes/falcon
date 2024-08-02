@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container-md p0">
-    <div class="signup-content h100vh">
+    <div class="signup-content-second h100vh">
         <div class="signup-desc">
             <div class="signup-desc-content" style="padding-left: 30px;padding-right: 30px;text-align:center;">
                 <img src="assets/img/logo falcon red_Website.png" alt="" class="img-fluid img-logo">
@@ -16,7 +16,7 @@
 
                     <div class="row">
                         <div class="col-sm-12">
-                            <p style="font-size: 25px; font-weight:900;text-transform: uppercase;padding-bottom: 2rem; color:#060606;">
+                            <p style="font-size: 25px; font-weight:900;text-transform: uppercase;padding-bottom: 2rem; color:#ffffff;">
                                 Checkout Sekarang!!!
                             </p>
                         </div>
@@ -29,7 +29,7 @@
                     <div class="row" style="padding-bottom:2rem;">
                         <div class="col-sm-12">
                             <?php $total = $data['total']; ?>
-                            <table class="table-responsive table-checkout" style="width:100%;">
+                            <table class="table-responsive table-checkout" style="width:100%;  color:#ffffff;">
                                 <tbody>
                                     <tr>
                                         <th>PAKET MEMBERSHIP</th>
@@ -58,7 +58,7 @@
 
                             <div class="form-group">
                                 <input class="agree-term" type="checkbox" name="checkbox" id="terms_1" />
-                                <label for="terms_1" class="label-agree-term"><span><span></span></span>
+                                <label for="terms_1" class="label-agree-term" style="color: #ffffff;"><span><span></span></span>
                                     Dengan mencentang kotak di sebelah kiri saya menyatakan menyetujui dan paham dari isi syarat dan ketentuan yang berlaku di Fitnessworks
                                     <!-- <a href="{{ URL::asset('assets/docs/T&C presale FW samator.pdf'); }}" target="_blank" class="terms-syarat">Lihat Syarat & Ketentuan</a> -->
                                     <a href="{{ URL::asset('assets/docs/Waifer presale FW samator.pdf') }}" onclick="openPdfPopup(event)" class="terms-tuntutan">Lihat Surat Penyerahan Tuntutan</a>
@@ -83,7 +83,7 @@
 
                             <div class="form-group">
                                 <input class="agree-term" type="checkbox" name="checkbox" id="terms_2" />
-                                <label for="terms_2" class="label-agree-term"><span><span></span></span>
+                                <label for="terms_2" class="label-agree-term" style="color: #ffffff;"><span><span></span></span>
                                     Dengan mencentang kotak di sebelah kiri saya menyatakan menyetujui dan paham dari isi surat penyerahan tuntutan
                                     <a href="{{ URL::asset('assets/docs/Waifer presale FW samator.pdf'); }}" target="_blank" class="terms-tuntutan">Lihat Surat Penyerahan Tuntutan</a>
                                 </label>
@@ -91,7 +91,7 @@
 
                             <div class="form-group">
                                 <input class="agree-term" type="checkbox" name="terms_3" id="terms_3" />
-                                <label for="terms_3" class="label-agree-term"><span><span></span></span>
+                                <label for="terms_3" class="label-agree-term" style="color: #ffffff;"><span><span></span></span>
                                     Dengan mencentang kotak di sebelah kiri saya menyetujui menerima dan mengikuti semua update, promo, dan informasi Fitnessworks
                                 </label>
                             </div>
