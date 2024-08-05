@@ -111,7 +111,7 @@
                     <p class="desc-promo" style="font-style: Poppins; font-weight: 700;">
                         FALCON FITNESS BOX community that leverages technology and functional training to create high-intensity group workouts that are efficient, fun, and results-oriented. Hanya selama
                         <class="form-title" style="text-align: left; font-weight: 700;color: #FECC09; font-style: poppins;">
-                            Periode Presale Gabung Member mulai Rp 225,500 All Access Fitnessworks & Unlimited.
+                            Periode Presale Gabung Member mulai Rp 808,000 All Access Fitnessworks & Unlimited.
                     </p>
                     <div class="spacer"></div>
                     <div class="ig" style="position: relative;">
@@ -155,7 +155,7 @@
 
                         <form method="POST" id="signup-form" class="signup-form">
                             {{ csrf_field() }}
-                            <h2 class="form-title">Hanya selama Periode Presale<br>Gabung Member mulai Rp 225k + <br>All Access Fitnessworks & Unlimited.
+                            <h2 class="form-title">Hanya selama Periode Presale<br>Gabung Member mulai Rp 808k + <br>All Access Fitnessworks & Unlimited.
                             </h2>
                             <div class="form-group">
                                 <label for="full_name" class="normal" style="font-weight: 600;margin-left: 5px;color:#ffffff;">Nama
@@ -274,8 +274,8 @@
             //     '</tbody></table>',
             html: '<p style="color:#000000;font-weight:bold;">Paket Membership</p>' +
                 '<table style="color:#000000;width:100%;font-size:14px;"><tbody> ' +
-                '<tr><td style="vertical-align: top;">Special Periode Presale</td><td>IDR. 225,500</td></tr>' +
-                '<tr><td style="vertical-align: top;">Total</td><td>IDR. 225,500</td></tr>' +
+                '<tr><td style="vertical-align: top;">Special Periode Presale</td><td>IDR. 808,000</td></tr>' +
+                '<tr><td style="vertical-align: top;">Total</td><td>IDR. 808,000</td></tr>' +
                 '</tbody></table>' +
                 '<div style="text-align:left;margin-top:10px;"><input type="checkbox" name="checkbox" id="agree-term" class="agree-term" />' +
                 '<label for="agree-term" class="label-agree-term" style="color:black;"><span><span></span></span>Dengan mencentang kotak di sebelah kiri saya menyetujui menerima dan mengikuti semua update, promo, dan informasi Fitnessworks</label>' +
@@ -326,7 +326,7 @@
                 '<table style="color:#000000; width:100%; font-size:14px; border-collapse:collapse; margin-top: 20px;"><tbody>' +
                 '<tr style="border-bottom:1px solid #000;"><td style="vertical-align:top;color:#000000;">Paket Membership</td><td style="text-align:right;">Price</td></tr>' +
                 '<tr style="border-bottom:1px solid #000;"><td style="vertical-align:top;color:#000000;">Special Periode Presale</td><td style="text-align:right;">IDR. 225,500</td></tr>' +
-                '<td style="vertical-align:top;">Total</td><td style="text-align:right;">IDR. 225,500</td></tr>' +
+                '<td style="vertical-align:top;">Total</td><td style="text-align:right;">IDR. 808,000</td></tr>' +
                 '</tbody></table>' +
                 '<div style="text-align:left; margin-top:10px;">' +
                 '<input type="checkbox" name="checkbox" id="agree-term" class="agree-term" />' +
