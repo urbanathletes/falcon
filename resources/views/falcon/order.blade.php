@@ -5,7 +5,7 @@
     <div class="signup-content h100vh">
         <div class="signup-desc">
             <div class="signup-desc-content" style="padding-left: 30px;padding-right: 30px;text-align:center;">
-                <img src="assets/img/logo falcon red_Website.png" alt="" class="img-fluid img-logo">
+                <img src="assets/img/logo falcon putih_Website.png" alt="" class="img-fluid img-logo">
                 <!-- <img src="assets/img/bg-guest-profile.jpg" alt="" class="img-fluid" style="min-height: 100vh;"> -->
             </div>
         </div>
@@ -16,7 +16,7 @@
 
                     <div class="row">
                         <div class="col-sm-12">
-                            <p style="font-size: 25px; font-weight:900;text-transform: uppercase;padding-bottom: 2rem; color:#060606;">
+                            <p style="font-size: 25px; font-weight:900;text-transform: uppercase;padding-bottom: 2rem; color:#ffffff;">
                                 Pemesanan Telah Berhasil, Silahkan melakukan pembayaran.
                             </p>
                         </div>
