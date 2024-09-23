@@ -404,7 +404,7 @@ body {
     color: #222;
     font-weight: 400;
     font-family: 'Poppins';
-    background-image: url("../img/BG\ LP\ Falcon.png")!important;
+    background-image: url("../img/bglpfalcon.png") !important;
     background-repeat: no-repeat;
     background-size: cover;
     -moz-background-size: cover;
@@ -421,7 +421,7 @@ body {
     color: #222;
     font-weight: 400;
     font-family: 'Poppins';
-    background-image: url("../img/BG\ LP2.png")!important;
+    background-image: url("../img/bglpfalcon.png") !important;
     background-repeat: no-repeat;
     background-size: cover;
     -moz-background-size: cover;
@@ -445,9 +445,17 @@ body {
 }
 
 .btn-active {
-    background-color: #190f41 !important;
-    color: #ffb800 !important;
+    background-color: #FF0000 !important;
+    color: #ffffff !important;
 }
+
+.btn-falcon {
+    background: linear-gradient(175.01deg, #000000 -9.6%, rgba(88, 10, 3, 0) 92.34%);
+    color: #ffffff; /* Warna teks tombol */
+    border: 2px solid #FF0000; /* Warna border */
+    border-radius: 4px; /* Sesuaikan dengan keinginan Anda */
+}
+
 
 .form-select:focus {
     border: 2px solid #190f41;
@@ -503,7 +511,7 @@ body {
 }
 
 
-.signup-content-second{
+.signup-content-second {
     background: #000000;
     border-radius: 15px;
     -moz-border-radius: 15px;
@@ -598,7 +606,7 @@ body {
     box-sizing: border-box;
     font-size: 14px;
     font-weight: 700;
-    color:#2C1815;
+    color: #ffffff;
     text-transform: uppercase;
     border: none;
     background-color: #FF0000;

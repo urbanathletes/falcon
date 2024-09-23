@@ -11,7 +11,6 @@ use App\Models\Lead;
 
 class PromoFalconController extends Controller
 {
-    //
     public function index()
     {
         $clubId = "";
@@ -61,7 +60,6 @@ class PromoFalconController extends Controller
 
         if ($validateData['club_id'] == 17) { //Samator
             $packageMembershipId = 856;
-
         }
 
         $foundMember = DB::table('ua_mst_members')->whereRaw('email = "' . $validateData['email'] . '"')->whereRaw('deletedAt is null')->first();
@@ -87,7 +85,7 @@ class PromoFalconController extends Controller
 
             $foundTransaction = DB::table('ua_orders')
                 ->whereRaw('member_id = ' . $foundMember->id)
-                ->whereRaw('package_membership_id in (856)')
+                ->whereRaw('package_membership_id in (856,789,790,791,792)')
                 ->whereRaw('status = "paid"')
                 ->first();
             if (isset($foundTransaction)) {
@@ -134,6 +132,7 @@ class PromoFalconController extends Controller
 
         return view('falcon.checkout', compact('packageMembership', 'leadsId', 'data', 'salesList'));
     }
+
 
     private function getUrl($key = NULL)
     {

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Falcon Form Fitnessworks" />
     <title>Falcon - Forms</title>
-    <link rel="icon" href="{{ URL::asset('assets/img/icon-falcon.jpg') }}">
+    <link rel="icon" href="{{ URL::asset('assets/img/falconfavicon.png') }}">
     <link rel="stylesheet" href="{{ URL::asset('assets/css/bootstrap/bootstrap.css') }}" />
     <link rel="stylesheet" href="{{ URL::asset('assets/css/style-form.css') }}" />
     <link rel="stylesheet" href="{{ URL::asset('assets/fonts/material-icon/css/material-design-iconic-font.min.css') }}">
@@ -112,6 +112,43 @@ Pre Loader
             margin-left: 16px;
             background: #1a133f;
             border-radius: 50%;
+        }
+
+        .package-box {
+            background-color: #2f2f2f;
+            color: #ffffff;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .package-box .price {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .package-box .duration {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .package-box .extra-info {
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .package-box .choose-package-btn {
+            background-color: #ff0000;
+            border: none;
+            color: #ffffff;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            text-transform: uppercase;
         }
     </style>
     <!-- Meta Pixel Code -->

@@ -101,9 +101,10 @@
                     <div class="spacer-p0"></div>
                     <p class="jul-one" style="line-height: 1.2;text-transform: uppercase;">
                         <span style="color: #Ffff;font: Poppins; font-weight:bold">
-                            Jadilah yang pertama merasakan <br> sensasi baru berolahraga, <br>
-                            dapatkan penawaran harga <br> spesial presale <br>
-                            Falcon Fitness box!
+                            Be the first to experience a new <br>
+                            workout sensation! Secure your<br>
+                            exclusive presale offer for the<br>
+                            Falcon Fitness Box now!
                         </span>
                     </p>
                     <br>
@@ -111,7 +112,7 @@
                     <p class="desc-promo" style="font-style: Poppins; font-weight: 700;">
                         FALCON FITNESS BOX community that leverages technology and functional training to create high-intensity group workouts that are efficient, fun, and results-oriented. Hanya selama
                         <class="form-title" style="text-align: left; font-weight: 700;color: #FECC09; font-style: poppins;">
-                            Periode Presale Gabung Member mulai Rp 808,000 All Access Fitnessworks & Unlimited.
+                            Only during the Presale Period Join Members from Rp 800K
                     </p>
                     <div class="spacer"></div>
                     <div class="ig" style="position: relative;">
@@ -155,7 +156,7 @@
 
                         <form method="POST" id="signup-form" class="signup-form">
                             {{ csrf_field() }}
-                            <h2 class="form-title">Hanya selama Periode Presale<br>Gabung Member mulai Rp 808k + <br>All Access Fitnessworks & Unlimited.
+                            <h2 class="form-title">7 days special price And get<br>free heart rate monitor
                             </h2>
                             <div class="form-group">
                                 <label for="full_name" class="normal" style="font-weight: 600;margin-left: 5px;color:#ffffff;">Nama
@@ -202,25 +203,6 @@
                                     } ?>
                                 </select>
                             </div>
-                            <div class="form-group">
-                                <label for="time_call" class="normal" style="font-weight: 600;margin-left: 5px;color:#ffffff;">Pilih
-                                    waktu untuk dihubungi<span style="color:red;"> *</span></label>
-                                <input style="display:none;" type="text" class="form-input" name="time_call" id="time_call" placeholder="" />
-                                <div class="row">
-                                    <div class="col" style="text-align: center;">
-                                        <button onclick="selectTime(this)" value="pagi" class="btn-time" type="button" style="width:100%;border-radius: 15px;background-color: white;height: 40px;">Pagi</button>
-                                    </div>
-                                    <div class="col" style="text-align: center;">
-                                        <button onclick="selectTime(this)" value="siang" class="btn-time" type="button" style="width:100%;border-radius: 15px;background-color: white;height: 40px;">Siang</button>
-                                    </div>
-                                    <div class="col" style="text-align: center;">
-                                        <button onclick="selectTime(this)" value="malam" class="btn-time" type="button" style="width:100%;border-radius: 15px;background-color: white;height: 40px;">Malam</button>
-                                    </div>
-                                </div>
-                                @if ($errors->has('time_call'))
-                                <span class="text-danger">{{ $errors->first('time_call') }}</span>
-                                @endif
-                            </div>
                             <br>
                             <div class="form-group">
                                 <!-- <input type="button" name="benefit" id="benefit" class="button-benefit" value="Member Benefit" /> -->
@@ -257,21 +239,6 @@
 
     $(".term-service").click(function() {
         Swal.fire({
-            // html: '<p style="color:#ffffff" class="header-rule-1">Syarat & Ketentuan Promo 99K :</p>' +
-            //     '<table style="color:#ffffff" class="table-responsive table-rule"><tbody> ' +
-            //     '<tr><td style="vertical-align: top;min-width:25px;">1</td><td>Membership 99k berlaku <b style="color:#ffb800!important;">Single Club</b> dan mendapatkan fasilitas gym selama <b style="color:#ffb800!important;">14 hari</b> berturut-turut.</td></tr>' +
-            //     '<tr><td style="vertical-align: top;min-width:25px;">2</td><td>Membership ini tidak mengikat setelah 14 hari usai.</td></tr>' +
-            //     '<tr><td style="vertical-align: top;min-width:25px;">3</td><td>Hanya berlaku untuk <b style="color:#ffb800!important;">1x transaksi</b>, tidak dapat di ulang dan <b style="color:#ffb800!important;">tidak dapat pindah club</b>.</td></tr>' +
-            //     '<tr><td style="vertical-align: top;min-width:25px;">4</td><td>Calon member berusia minimum 18 tahun.</td></tr>' +
-            //     '<tr><td style="vertical-align: top;min-width:25px;">5</td><td>Membership hanya diberikan kepada <b style="color:#ffb800!important;">New Join Member</b> atau belum pernah join membership maupun trial di salah satu cabang dalam kurun waktu 6 bulan terakhir.</td></tr>' +
-            //     '<tr><td style="vertical-align: top;min-width:25px;">6</td><td>Fasilitas yang didapat oleh member <b style="color:#ffb800!important;">sama seperti regular membership</b> yaitu :</td></tr>' +
-            //     '<tr><td style="vertical-align: top;min-width:25px;"></td><td>a. Free In-Body Check &nbsp;&nbsp;&nbsp; b. Free 1x PT Session &nbsp;&nbsp;&nbsp; c. Free Access All Classes & Exercises</td></tr>' +
-            //     '<tr><td style="vertical-align: top;min-width:25px;"></td><td>d. Latihan mandiri</td></tr>' +
-            //     '<tr><td style="vertical-align: top;min-width:25px;">7</td><td>Membership ini Non-Refundable atau tidak dapat diuangkan</td></tr>' +
-            //     '<tr><td style="vertical-align: top;min-width:25px;">8</td><td>Membership akan aktif setelah diaktifkan oleh member melalui Aplikasi</td></tr>' +
-            //     '<tr><td style="vertical-align: top;min-width:25px;">9</td><td>Membership dapat langsung diaktifkan setelah pembayaran selesai</td></tr>' +
-            //     '<tr><td style="vertical-align: top;min-width:25px;">10</td><td>Start Date dapat ditunda penggunaannya maksimal 7 hari setelah tanggal pembayaran.<br>(setelah lewat hari ke-7 setelah pembayaran, membership akan aktif secara otomatis dan berjalan hingga 14 hari kedepan)</td></tr>' +
-            //     '</tbody></table>',
             html: '<p style="color:#000000;font-weight:bold;">Paket Membership</p>' +
                 '<table style="color:#000000;width:100%;font-size:14px;"><tbody> ' +
                 '<tr><td style="vertical-align: top;">Special Periode Presale</td><td>IDR. 808,000</td></tr>' +
@@ -292,32 +259,6 @@
         e.preventDefault();
         var form = $(this).parents('form');
         Swal.fire({
-            // html: '<p style="color:#ffffff" class="header-rule-1">Syarat & Ketentuan Promo 99K :</p>' +
-            //     '<table style="color:#ffffff" class="table-responsive table-rule"><tbody> ' +
-            //     '<tr><td style="vertical-align: top;min-width:25px;">1</td><td>Membership 99k berlaku <b style="color:#ffb800!important;">Single Club</b> dan mendapatkan fasilitas gym selama <b style="color:#ffb800!important;">14 hari</b> berturut-turut.</td></tr>' +
-            //     '<tr><td style="vertical-align: top;min-width:25px;">2</td><td>Membership ini tidak mengikat setelah 14 hari usai.</td></tr>' +
-            //     '<tr><td style="vertical-align: top;min-width:25px;">3</td><td>Hanya berlaku untuk <b style="color:#ffb800!important;">1x transaksi</b>, tidak dapat di ulang dan <b style="color:#ffb800!important;">tidak dapat pindah club</b>.</td></tr>' +
-            //     '<tr><td style="vertical-align: top;min-width:25px;">4</td><td>Calon member berusia minimum 18 tahun.</td></tr>' +
-            //     '<tr><td style="vertical-align: top;min-width:25px;">5</td><td>Membership hanya diberikan kepada <b style="color:#ffb800!important;">New Join Member</b> atau belum pernah join membership maupun trial di salah satu cabang dalam kurun waktu 6 bulan terakhir.</td></tr>' +
-            //     '<tr><td style="vertical-align: top;min-width:25px;">6</td><td>Fasilitas yang didapat oleh member <b style="color:#ffb800!important;">sama seperti regular membership</b> yaitu :</td></tr>' +
-            //     '<tr><td style="vertical-align: top;min-width:25px;"></td><td>a. Free In-Body Check &nbsp;&nbsp;&nbsp; b. Free 1x PT Session &nbsp;&nbsp;&nbsp; c. Free Access All Classes & Exercises</td></tr>' +
-            //     '<tr><td style="vertical-align: top;min-width:25px;"></td><td>d. Latihan mandiri</td></tr>' +
-            //     '<tr><td style="vertical-align: top;min-width:25px;">7</td><td>Membership ini Non-Refundable atau tidak dapat diuangkan</td></tr>' +
-            //     '<tr><td style="vertical-align: top;min-width:25px;">8</td><td>Membership akan aktif setelah diaktifkan oleh member melalui Aplikasi</td></tr>' +
-            //     '<tr><td style="vertical-align: top;min-width:25px;">9</td><td>Membership dapat langsung diaktifkan setelah pembayaran selesai</td></tr>' +
-            //     '<tr><td style="vertical-align: top;min-width:25px;">10</td><td>Start Date dapat ditunda penggunaannya maksimal 7 hari setelah tanggal pembayaran.<br>(setelah lewat hari ke-7 setelah pembayaran, membership akan aktif secara otomatis dan berjalan hingga 14 hari kedepan)</td></tr>' +
-            //     '</tbody></table>' +
-            //     '<div style="text-align:left;"><input type="checkbox" name="checkbox" id="agree-term" class="agree-term" />' +
-            //     '<label for="agree-term" class="label-agree-term" style="color:white;"><span><span></span></span>Dengan mencentang kotak di sebelah kiri saya menyetujui menerima dan mengikuti semua update, promo, dan informasi Fitnessworks <a href="#" class="term-service" style="color:#ffb800!important;">Syarat Ketentuan</a> Berlaku</label>' +
-            //     '<hr>',
-            // html: '<p style="color:#000000;font-weight:bold;">Paket Membership</p>' +
-            //     '<table style="color:#000000;width:100%;font-size:14px;"><tbody> ' +
-            //     '<tr><td style="vertical-align: top;">Special Periode Presale</td><td>IDR. 225,500</td></tr>' +
-            //     '<tr><td style="vertical-align: top;">Total</td><td>IDR. 225,500</td></tr>' +
-            //     '</tbody></table>' +
-            //     '<div style="text-align:left;margin-top:10px;"><input type="checkbox" name="checkbox" id="agree-term" class="agree-term" />' +
-            //     '<label for="agree-term" class="label-agree-term" style="color:black;"><span><span></span></span>Dengan mencentang kotak di sebelah kiri saya menyetujui menerima dan mengikuti <br> semua update, promo, dan informasi Fitnessworks</label>' +
-            //     '<hr>',
             html: '<div style="width:100%; padding:30px; box-sizing:border-box;">' +
                 '<div style="display:flex; align-items:center; justify-content:space-between; margin-bottom: 20px;">' +
                 '<img src="../assets/img/checkout-samator.png" alt="" style="width:100px; width:339px; height:66px; margin-right: 10px;">' +
@@ -387,91 +328,4 @@
         });
     });
 </script>
-@if (session()->has('message'))
-<script>
-    Swal.fire({
-        html: `
-        <style>
-            @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
-
-            body {
-                font-family: 'Poppins', sans-serif;
-            }
-
-            .container {
-                width: 100%;
-                max-width: 800px; /* Set a maximum width */
-                padding: 20px;
-                box-sizing: border-box;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                border-radius: 10px;
-                background-color: #ffffff;
-                position: relative; /* Changed to relative */
-            }
-
-             .header {
-                width: 100%;
-                display: flex;
-                justify-content: flex-start; /* Align items to the left */
-                margin-bottom: 20px;
-                padding-left: 20px; /* Add padding to ensure logo isn't too close to edge */
-            }
-
-            .header img.logo {
-                max-width: 200px; /* Adjust logo size */
-                height: auto;
-            }
-
-            .container h2 {
-                margin: 0;
-                font-size: 1.5rem;
-                text-align: center;
-                color: #333; /* Add a color for better visibility */
-            }
-
-            .container p.message {
-                font-size: 15px;
-                font-weight: 500;
-                margin: 20px 0;
-                text-align: center;
-                line-height: 1.5;
-                color: #666; /* Add a color for better readability */
-            }
-
-            @media only screen and (max-width: 640px) {
-                .container {
-                    width: 90%;
-                    padding: 15px;
-                }
-
-                .header img.logo {
-                    max-width: 120px; /* Adjust for smaller screens */
-                }
-
-                .container h2 {
-                    font-size: 1.25rem;
-                }
-
-                .container p.message {
-                    font-size: 0.875rem;
-                }
-            }
-        </style>
-        <div class="container">
-            <div class="header">
-                <img src="../assets/img/logo falcon red_Website.png" alt="Falcon" class="logo">
-            </div>
-            <h2>CONGRATULATIONS!!</h2>
-            <p class="message">
-                You have booked your spot for 7 days special offer!!<br>
-                We put you spot on hold for 24 hours, our fitness consultant will contact you shortly, or please come to our booth at Lenmarc Mall Surabaya, Lantai G to sealed the deal!
-        </div>`,
-        showCloseButton: true,
-        showConfirmButton: false,
-    });
-</script>
-{{ session()->get('message') }}
-@endif
 @endsection

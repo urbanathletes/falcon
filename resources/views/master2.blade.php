@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Falcon Form Fitnessworks" />
     <title>Falcon - Forms</title>
-    <link rel="icon" href="{{ URL::asset('assets/img/icon-falcon.jpg') }}">
+    <link rel="icon" href="{{ URL::asset('assets/img/falconfavicon.png') }}">
     <link rel="stylesheet" href="{{ URL::asset('assets/css/bootstrap/bootstrap.css') }}" />
     <link rel="stylesheet" href="{{ URL::asset('assets/css/style-form.css') }}" />
     <link rel="stylesheet" href="{{ URL::asset('assets/fonts/material-icon/css/material-design-iconic-font.min.css') }}">
