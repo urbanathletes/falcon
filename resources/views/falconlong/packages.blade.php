@@ -122,7 +122,9 @@
         </div>
         <div class="signup-form-content text-center">
             <h2 style="color: #fff; font-weight: bold;">Presale Early Bird Packages</h2>
-            <form method="POST" action="{{ route('falcon.packages.select') }}" id="package-form" class="signup-form">
+            <!--<form method="POST" action="{{ route('falconlong.packages.select') }}" id="package-form" class="signup-form">-->
+            <!--<form action="{{ route('falconlong.order') }}" method="POST">-->
+            <form action="{{ route('falconlong.checkout') }}" method="POST">
                 @csrf
                 <div class="form-group">
                     <div class="row justify-content-center">
@@ -133,10 +135,8 @@
                                     {{ $package->name }}
                                     <h6 class="card-title">IDR {{ number_format($package->price, 0, ',', '.') }} /</h6>
                                     <p class="card-text">{{ $package->month }} Months</p>
-
                                 </div>
                                 <div class="card-body">
-        
                                     @if($package->id == 1475)
                                     <p class="text-color-white">(+ Rp. 488.000) cost for Myzone Heart Rate Tracker</p>
                                     @elseif($package->id == 1476)
@@ -148,7 +148,6 @@
                                     @elseif($package->id == 1479)
                                     <p class="text-color-white">FREE Myzone Heart Rate Tracker</p>
                                     @endif
-
                                     <label class="d-block mt-3">
                                         <input type="radio" name="package_id" value="{{ $package->id }}" required>
                                         Choose Package

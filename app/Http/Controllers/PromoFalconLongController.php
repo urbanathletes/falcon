@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Redirect;
 use App\Models\Lead;
 
 class PromoFalconLongController extends Controller
@@ -16,251 +14,196 @@ class PromoFalconLongController extends Controller
         $clubId = "";
         $withClub = false;
         if (isset($_GET['club'])) {
-            $foundClub = DB::table('ua_mst_clubs')->whereRaw('id = ' . $_GET['club'])->whereRaw('org_id = 15')->whereRaw('deletedAt is null')->first();
-            if (isset($foundClub)) {
-                $club = DB::table('ua_mst_clubs')->whereRaw('id = ' . $_GET['club'])->whereRaw('org_id = 15')->whereRaw('deletedAt is null and is_deleted = 0')->get();
+            $foundClub = DB::table('ua_mst_clubs')->where('id', $_GET['club'])->where('org_id', 15)->whereNull('deletedAt')->first();
+            if ($foundClub) {
+                $club = DB::table('ua_mst_clubs')->where('id', $_GET['club'])->where('org_id', 15)->whereNull('deletedAt')->get();
                 $withClub = true;
             } else {
-                $club = DB::table('ua_mst_clubs')->whereRaw('org_id = 15')->whereRaw('deletedAt is null and is_deleted = 0')->get();
+                $club = DB::table('ua_mst_clubs')->where('org_id', 15)->whereNull('deletedAt')->get();
             }
         } else {
-            $club = DB::table('ua_mst_clubs')->whereRaw('org_id = 15')->whereRaw('deletedAt is null and is_deleted = 0')->get();
+            $club = DB::table('ua_mst_clubs')->where('org_id', 15)->whereNull('deletedAt')->get();
         }
-
         return view('falconlong.index', compact('club', 'withClub'));
-    }
-
-    // public function store(Request $request)
-    // {
-    //     $validateData = $request->validate([
-    //         'name' => 'required|max:255',
-    //         'phone' => 'required|max:255',
-    //         'email' => 'required|max:255',
-    //         'club_id' => 'required'
-    //     ]);
-
-    //     $validateData['org_id'] = env('ORG_ID');
-    //     if (isset($_GET['source'])) {
-    //         $validateData['source'] = $_GET['source'];
-    //         $validateData['source_sub'] = isset($_GET['sub']) ? $_GET['sub'] : null;
-    //     } else {
-    //         $validateData['source'] = 'website';
-    //     }
-    //     if (isset($_GET['type'])) {
-    //         $validateData['type_promo'] = $_GET['type'];
-    //     } else {
-    //         $validateData['type_promo'] = 'presale_falcon';
-    //     }
-    //     $validateData['sales_id'] = '232';
-    //     $validateData['createdAt'] = date('Y-m-d H:i:s');
-    //     $validateData['updatedAt'] = date('Y-m-d H:i:s');
-
-    //     if ($validateData['club_id'] == 16) { //Falcon
-    //         $packageMembershipId = 856;
-    //     }
-
-    //     $foundMember = DB::table('ua_mst_members')->whereRaw('email = "' . $validateData['email'] . '"')->whereRaw('deletedAt is null')->first();
-    //     if (!isset($foundMember)) {
-    //         $foundLead = DB::table('ua_mst_leads')->whereRaw('email = "' . $validateData['email'] . '"')->whereRaw('deletedAt is null')->first();
-    //         if (!isset($foundLead)) {
-    //             $modelLead = Lead::create($validateData);
-    //         } else {
-    //             $modelLead = $foundLead;
-    //         }
-    //         $leadsId = $modelLead->id;
-    //     } else {
-    //         $leadsId = $foundMember->leads_id;
-    //         $foundMemberPackage = DB::table('ua_mst_members_packages')
-    //             ->whereRaw('member_id = ' . $foundMember->id)
-    //             ->whereRaw('package_membership_expired_date >= date_sub(now(), interval 6 month)')
-    //             ->whereRaw('deletedAt is null')
-    //             ->whereRaw('package_membership_id is not null')
-    //             ->first();
-    //         if (isset($foundMemberPackage)) {
-    //             return back()->with('error', 'Maaf anda tidak memenuhi syarat & ketentuan untuk membeli promo falcon.');
-    //         }
-
-    //         $foundTransaction = DB::table('ua_orders')
-    //             ->whereRaw('member_id = ' . $foundMember->id)
-    //             ->whereRaw('package_membership_id in (856,789,790,791,792)')
-    //             ->whereRaw('status = "paid"')
-    //             ->first();
-    //         if (isset($foundTransaction)) {
-    //             return back()->with('error', 'Maaf anda sudah pernah membeli promo falcon.');
-    //         }
-    //     }
-
-    //     $packageMembership = DB::table('ua_package_memberships as a')
-    //         ->selectRaw('a.*, c.name as shift_name')
-    //         ->join('ua_mst_shifts as c', 'c.id', '=', 'a.shift_id')
-    //         ->where('a.id', '=', $packageMembershipId)
-    //         ->first();
-
-    //     $response = Http::withBasicAuth('keys', 'secret')
-    //         ->withHeaders([
-    //             'Content-Type' => 'application/json',
-    //             'Authorization' => 'Basic some_base64_encrypted_key'
-    //         ])
-    //         ->post($this->getUrl('checkout-presale'), [
-    //             'orgId' => env('ORG_ID'),
-    //             'clubId' => $validateData['club_id'],
-    //             'packageMembershipId' => $packageMembership->id,
-    //             'leadId' => $leadsId,
-    //             'email' => $validateData['email'],
-    //             'phone' => $validateData['phone'],
-    //             'name' => $validateData['name']
-    //         ]);
-
-    //     $jsonData = $response->json();
-    //     $data = isset($jsonData['data']) ? $jsonData['data'] : [];
-
-    //     // get employee (sales / fitness consultant)
-    //     $response = Http::get($this->getUrl('presales/sales-employee?orgId=' . env('ORG_ID') . '&clubId=' . $validateData['club_id']));
-    //     $salesData = $response->json();
-    //     $salesList = [];
-
-    //     if (count($salesData['data']) > 0) {
-    //         /* foreach ($salesData['data'] as $row => $sales) {
-    //             if (strtolower($sales['position']['name']) == 'fitness consultant') {
-    //                 array_push($salesList, $sales);
-    //             }
-    //         };*/
-    //     }
-
-    //     return view('falconlong.checkout', compact('packageMembership', 'leadsId', 'data', 'salesList'));
-    // }
-
-
-    private function getUrl($key = NULL)
-    {
-        $server = env('APP_ENV');
-        $url = '';
-        if ($server == 'local') {
-            $url = 'http://localhost:8080/api/' . $key;
-        } elseif ($server == 'trial') {
-            $url = 'https://dev-fwapi.fitnessworks.co.id/api/' . $key;
-        } elseif ($server == 'production') {
-            $url = 'https://fwapi.fitnessworks.co.id/api/' . $key;
-        }
-
-        return $url;
     }
 
     public function showInfoForm()
     {
-        return view('falconlong.personal-info');  // Ensure this view exists
+        $clubId = "";
+        $withClub = false;
+        if (isset($_GET['club'])) {
+            $foundClub = DB::table('ua_mst_clubs')->where('id', $_GET['club'])->where('org_id', 15)->whereNull('deletedAt')->first();
+            if ($foundClub) {
+                $club = DB::table('ua_mst_clubs')->where('id', $_GET['club'])->where('org_id', 15)->whereNull('deletedAt')->get();
+                $withClub = true;
+            } else {
+                $club = DB::table('ua_mst_clubs')->where('org_id', 15)->whereNull('deletedAt')->get();
+            }
+        } else {
+            $club = DB::table('ua_mst_clubs')->where('org_id', 15)->whereNull('deletedAt')->get();
+        }
+
+        return view('falconlong.personal-info', compact('club', 'withClub'));
     }
 
     public function showPackages()
     {
-        // Fetch the available packages from the database
         $packages = DB::table('ua_package_memberships')
-            ->select('id', 'name', 'price', 'month') // Select 'month' instead of 'duration'
+            ->select('id', 'name', 'price', 'month')
             ->where('org_id', 15)
             ->whereNull('deletedAt')
+            ->whereIn('id', [1475, 1476, 1477, 1478, 1479])
             ->get();
-
         return view('falconlong.packages', compact('packages'));
     }
 
-
     public function saveInfo(Request $request)
     {
-        // Validate the user's personal information
         $request->validate([
             'name' => 'required|max:255',
             'phone' => 'required|max:255',
             'email' => 'required|email|max:255',
-            'club_id' => 'required',
+            'clubId' => env('CLUB_ID'),
         ]);
 
-        // Store the user data in session
+        // Simpan data pengguna dalam session
         session([
             'user_info' => $request->only('name', 'phone', 'email', 'club_id'),
         ]);
 
-        // Redirect to the package selection page
-        return redirect()->route('falcon.packages');
+        return redirect()->route('falconlong.packages');
     }
 
     public function selectPackage(Request $request)
     {
-        // Validate the selected package
         $request->validate([
-            'package_id' => 'required|exists:ua_package_memberships,id',
+            'package_id' => 'required|in:1475,1476,1477,1478,1479',
         ]);
 
-        // Store the selected package in the session
         session(['selected_package_id' => $request->input('package_id')]);
 
-        // Redirect to the checkout page
-        return redirect()->route('falcon.checkout');
+        // return redirect()->route('falconlong.checkout');
+        
+        return redirect()->route('falconlong.showCheckoutForm');
+    }
+    
+    public function showCheckoutForm()
+    {
+        // Ambil package_id dari session
+        $packageId = session('selected_package_id');
+        $userInfo = session('user_info'); // Pastikan user info juga tersedia di session
+    
+        if (!$packageId || !$userInfo) {
+            return redirect()->route('falconlong.packages')->with('error', 'Please complete the previous steps.');
+        }
+    
+        // Tampilkan halaman dengan form POST otomatis
+        return view('falconlong.auto-checkout-form', [
+            'packageId' => $packageId,
+            'userInfo' => $userInfo
+        ]);
     }
 
-    public function checkout()
+    public function checkout(Request $request)
     {
-        // Retrieve the user info and selected package from the session
+        // Ambil data user dari sesi
         $userInfo = session('user_info');
-        $packageMembershipId = session('selected_package_id');
 
-        if (!$userInfo || !$packageMembershipId) {
-            // Redirect back if no data is available (if the session was cleared, for example)
-            return redirect()->route('falcon.info')->with('error', 'Please complete the previous steps.');
+        // Ambil package_id dari request dan simpan ke dalam session jika ada
+        if ($request->has('package_id')) {
+            session(['selected_package_id' => $request->input('package_id')]);
         }
 
-        // Fetch the selected package details from the database
+        // Ambil packageMembershipId dari session
+        $packageMembershipId = session('selected_package_id');
+
+        // Jika tidak ada user atau packageMembershipId, redirect dengan pesan error
+        if (!$userInfo || !$packageMembershipId) {
+            return redirect()->route('falconlong.info')->with('error', 'Please complete the previous steps.');
+        }
+
+        // Cek apakah member sudah ada berdasarkan email
+        $foundMember = DB::table('ua_mst_members')
+            ->where('email', $userInfo['email'])
+            ->whereNull('deletedAt')
+            ->first();
+
+        if (!$foundMember) {
+            // Jika member tidak ditemukan, cari di leads
+            $foundLead = DB::table('ua_mst_leads')
+                ->where('email', $userInfo['email'])
+                ->whereNull('deletedAt')
+                ->first();
+
+            // Jika lead juga tidak ditemukan, buat data baru di ua_mst_leads
+            if (!$foundLead) {
+                $modelLead = Lead::create([
+                    'name' => $userInfo['name'],
+                    'email' => $userInfo['email'],
+                    'phone' => $userInfo['phone'],
+                    'club_id' =>env('CLUB_ID'),
+                    'source' => 'website',
+                    'type_promo' => 'presale_falcon',
+                    'sales_id' => '232',
+                    'createdAt' => now(),
+                    'updatedAt' => now(),
+                ]);
+            } else {
+                $modelLead = $foundLead;
+            }
+            $leadsId = $modelLead->id;
+        } else {
+            // Jika member ditemukan, ambil leads_id dari member
+            $leadsId = $foundMember->leads_id;
+
+            // Cek apakah member memiliki paket yang masih aktif
+            $foundMemberPackage = DB::table('ua_mst_members_packages')
+                ->where('member_id', $foundMember->id)
+                ->whereRaw('package_membership_expired_date >= date_sub(now(), interval 6 month)')
+                ->whereNull('deletedAt')
+                ->first();
+
+            if ($foundMemberPackage) {
+                return back()->with('error', 'Maaf anda tidak memenuhi syarat & ketentuan untuk membeli promo falcon.');
+            }
+
+            // Cek transaksi apakah sudah pernah membeli promo falcon
+            $foundTransaction = DB::table('ua_orders')
+                ->where('member_id', $foundMember->id)
+                ->whereIn('package_membership_id', [1475, 1476, 1477, 1478, 1479])
+                ->where('status', 'paid')
+                ->first();
+
+            if ($foundTransaction) {
+                return back()->with('error', 'Maaf anda sudah pernah membeli promo falcon.');
+            }
+        }
+
+        // Ambil informasi package membership berdasarkan packageMembershipId
         $packageMembership = DB::table('ua_package_memberships')
             ->where('id', $packageMembershipId)
             ->first();
 
         if (!$packageMembership) {
-            return redirect()->route('falcon.packages')->with('error', 'Selected package not found.');
+            return back()->with('error', 'Paket membership tidak ditemukan.');
         }
 
-        // Display the checkout page
-        return view('falconlong.checkout', compact('packageMembership', 'userInfo'));
-    }
-
-
-    public function store(Request $request)
-    {
-        // Validate necessary fields (adjust according to what you need in the final step)
-        $validateData = $request->validate([
-            'checkout_id' => 'required',
-            'package_membership_id' => 'required',
-            // any other necessary fields...
+        // Simpan transaksi ke dalam tabel ua_orders
+        $orderId = DB::table('ua_orders')->insertGetId([
+            'member_id' => $foundMember->id ?? null,
+            'package_membership_id' => $packageMembershipId,
+            'status' => 'pending',
+            'createdAt' => now(),
+            'updatedAt' => now(),
         ]);
+        
+        $packageMembership = DB::table('ua_package_memberships as a')
+            ->selectRaw('a.*, c.name as shift_name')
+            ->join('ua_mst_shifts as c', 'c.id', '=', 'a.shift_id')
+            ->where('a.id', '=', $packageMembershipId)
+            ->first();
 
-        // Get the user info from the session
-        $userInfo = session('user_info');
-        if (!$userInfo) {
-            return redirect()->route('falcon.info')->with('error', 'Please provide your personal information.');
-        }
-
-        // Prepare data for the API or database based on the selected package and user details
-        $validateData['name'] = $userInfo['name'];
-        $validateData['phone'] = $userInfo['phone'];
-        $validateData['email'] = $userInfo['email'];
-        $validateData['club_id'] = $userInfo['club_id'];
-        $validateData['createdAt'] = now();
-        $validateData['updatedAt'] = now();
-
-        // Fetch the selected package from the session or database
-        $packageMembershipId = session('selected_package_id');
-        if (!$packageMembershipId) {
-            return redirect()->route('falcon.packages')->with('error', 'Please select a package.');
-        }
-
-        $packageMembership = DB::table('ua_package_memberships')->where('id', $packageMembershipId)->first();
-
-        if (!$packageMembership) {
-            return redirect()->route('falcon.packages')->with('error', 'Invalid package selected.');
-        }
-
-        // Proceed with the existing logic to process the order...
-        // Example: Make an API call or insert into your orders table.
-
-        // Send API request or insert data into your orders table
+        // Kirim request ke API checkout-presale
         $response = Http::withBasicAuth('keys', 'secret')
             ->withHeaders([
                 'Content-Type' => 'application/json',
@@ -268,52 +211,108 @@ class PromoFalconLongController extends Controller
             ])
             ->post($this->getUrl('checkout-presale'), [
                 'orgId' => env('ORG_ID'),
-                'clubId' => $validateData['club_id'],
+                'clubId' => env('CLUB_ID'),
                 'packageMembershipId' => $packageMembership->id,
-                'leadId' => $userInfo['lead_id'],  // Or create new if needed
-                'email' => $validateData['email'],
-                'phone' => $validateData['phone'],
-                'name' => $validateData['name'],
+                'leadId' => $leadsId,
+                'email' => $userInfo['email'],
+                'phone' => $userInfo['phone'],
+                'name' => $userInfo['name'],
+                'checkoutId' => $orderId,
             ]);
 
-        // Handle the response and show confirmation
-        $jsonData = $response->json();
+        if ($response->failed()) {
+            return back()->with('error', 'Gagal melakukan checkout, silakan coba lagi.');
+        }
+
+        // $jsonData = $response->json();
+        // $data = $jsonData['data'] ?? [];
+         $jsonData = $response->json();
         $data = isset($jsonData['data']) ? $jsonData['data'] : [];
-
-        return view('falconlong.checkout-complete', compact('packageMembership', 'data'));
+        $salesData = $response->json();
+        $salesList = [];
+        if (count($salesData['data']) > 0) {
+            /* foreach ($salesData['data'] as $row => $sales) {
+                if (strtolower($sales['position']['name']) == 'fitness consultant') {
+                    array_push($salesList, $sales);
+                }
+            };*/
+        }
+        
+    return view('falconlong.checkout', compact('packageMembership', 'leadsId', 'data', 'salesList'));
     }
+    
+      // Fungsi untuk menentukan URL berdasarkan environment
+    private function getUrl($key = NULL)
+    {
+        $server = env('APP_ENV');
+        $url = '';
 
+        switch ($server) {
+            case 'local':
+                $url = 'http://localhost:8080/api/' . $key;
+                break;
+            case 'trial':
+                $url = 'https://dev-fwapi.fitnessworks.co.id/api/' . $key;
+                break;
+            case 'production':
+                $url = 'https://fwapi.fitnessworks.co.id/api/' . $key;
+                break;
+        }
+
+        return $url;
+    }
 
     public function order(Request $request)
     {
-        if (isset($_POST['lead_id']) && isset($_POST['package_membership_id']) && isset($_POST['checkout_id'])) {
-            $lead = DB::table('ua_mst_leads')->where('id', '=', $_POST['lead_id'])->first();
+        // Ambil lead_id, package_membership_id, dan checkout_id dari request
+        $leadId = $request->input('lead_id');
+        $packageMembershipId = $request->input('package_membership_id');
+        $checkoutId = $request->input('checkout_id');
 
-            $response = Http::withBasicAuth('keys', 'secret')
-                ->withHeaders([
-                    'Content-Type' => 'application/json',
-                    'Authorization' => 'Basic some_base64_encrypted_key'
-                ])
-                ->post($this->getUrl('presales'), [
-                    'orgId' => env('ORG_ID'),
-                    'clubId' => env('CLUB_ID'),
-                    'checkoutId' => $_POST['checkout_id'],
-                    'leadId' => $_POST['lead_id'],
-                    'salesId' => '232',
-                    'packageMembershipId' => $_POST['package_membership_id'],
-                    'email' => $lead->email,
-                    'phone' => $lead->phone,
-                    'name' => $lead->name,
-                ]);
+        // Validasi data yang diperlukan
+        if (!$leadId || !$packageMembershipId || !$checkoutId) {
+            return back()->with('error', 'Required parameters are missing.');
+        }
+        // Ambil informasi lead berdasarkan lead_id
+        $lead = DB::table('ua_mst_leads')->where('id', $leadId)->first();
+        if (!$lead) {
+            return back()->with('error', 'Lead not found.');
+        }
 
-            $jsonData = $response->json();
-            $data = isset($jsonData['data']) ? $jsonData['data'] : [];
+        // Kirim request ke API untuk memproses order
+        $response = Http::withBasicAuth('keys', 'secret')
+            ->withHeaders([
+                'Content-Type' => 'application/json',
+                'Authorization' => 'Basic some_base64_encrypted_key',
+            ])
+            ->post($this->getUrl('presales'), [
+                'orgId' => env('ORG_ID'),
+                'clubId' => $lead->club_id, // Gunakan club_id dari lead
+                'checkoutId' => $checkoutId,
+                'leadId' => $leadId,
+                'salesId' => '232', // Sesuaikan jika perlu
+                'packageMembershipId' => $packageMembershipId,
+                'email' => $lead->email,
+                'phone' => $lead->phone,
+                'name' => $lead->name,
+            ]);
 
-            if ($response->successful()) {
-                $url = $data['xendit_invoice_url'];
-                return view('falconlong.order', compact('url'));
-            } elseif ($response->failed()) {
-            }
+        // Cek apakah respons API berhasil
+        if ($response->failed()) {
+            return back()->with('error', 'Failed to process the order.');
+        }
+       
+        // Ambil data dari respons API
+        $jsonData = $response->json();
+        $data = $jsonData['data'] ?? [];
+        
+        // Pastikan bahwa URL invoice Xendit tersedia dalam respons
+        if (isset($data['xendit_invoice_url'])) {
+            $url = $data['xendit_invoice_url'];
+            return view('falconlong.order', compact('url'));
+        } else {
+            return back()->with('error', 'Failed to retrieve the invoice URL.');
         }
     }
+
 }

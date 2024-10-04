@@ -20,7 +20,7 @@ Pre Loader
 --------------------------------------------- 
 */
 
-        .js-preloader {
+        /* .js-preloader {
             position: fixed;
             top: 0;
             left: 0;
@@ -44,7 +44,7 @@ Pre Loader
             opacity: 0;
             visibility: hidden;
             pointer-events: none;
-        }
+        } */
 
         @-webkit-keyframes dot {
             50% {
@@ -74,14 +74,14 @@ Pre Loader
             }
         }
 
-        .preloader-inner {
+        /* .preloader-inner {
             position: relative;
             width: 142px;
             height: 40px;
             background: #fff;
-        }
+        } */
 
-        .preloader-inner .dot {
+        /* .preloader-inner .dot {
             position: absolute;
             width: 16px;
             height: 16px;
@@ -93,8 +93,8 @@ Pre Loader
             transform: translateX(0);
             -webkit-animation: dot 2.8s infinite;
             animation: dot 2.8s infinite;
-        }
-
+        } */
+/* 
         .preloader-inner .dots {
             -webkit-transform: translateX(0);
             transform: translateX(0);
@@ -102,9 +102,9 @@ Pre Loader
             margin-left: 31px;
             -webkit-animation: dots 2.8s infinite;
             animation: dots 2.8s infinite;
-        }
+        } */
 
-        .preloader-inner .dots span {
+        /* .preloader-inner .dots span {
             display: block;
             float: left;
             width: 16px;
@@ -112,7 +112,7 @@ Pre Loader
             margin-left: 16px;
             background: #1a133f;
             border-radius: 50%;
-        }
+        } */
 
         .package-box {
             background-color: #2f2f2f;
@@ -171,16 +171,16 @@ Pre Loader
             s.parentNode.insertBefore(t, s)
         }(window, document, 'script',
             'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '1405509523713397');
+        fbq('init', '407085128817834');
         fbq('track', 'PageView');
     </script>
-    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1405509523713397&ev=PageView&noscript=1" /></noscript>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=407085128817834&ev=PageView&noscript=1" /></noscript>
     <!-- End Meta Pixel Code -->
 </head>
 
 <body class="background-3">
-    <div id="js-preloader" class="js-preloader">
-        <div class="preloader-inner">
+    <!-- <div id="js-preloader" class="js-preloader"> -->
+        <!-- <div class="preloader-inner"> -->
             <span class="dot"></span>
             <div class="dots">
                 <span></span>
@@ -197,12 +197,12 @@ Pre Loader
     <script src="{{ URL::asset('assets/vendor/jquery-validation/dist/additional-methods.min.js') }}"></script>
     <script src="{{ URL::asset('assets/js/main.js') }}"></script>
     <script src="{{ URL::asset('assets/font-awesome/all.js') }}"></script>
-    <script>
+    <!-- <script>
         // Page loading animation
         $(window).on('load', function() {
             $('#js-preloader').addClass('loaded');
         });
-    </script>
+    </script> -->
 </body>
 
 </html>

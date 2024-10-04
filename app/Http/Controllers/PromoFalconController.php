@@ -16,15 +16,15 @@ class PromoFalconController extends Controller
         $clubId = "";
         $withClub = false;
         if (isset($_GET['club'])) {
-            $foundClub = DB::table('ua_mst_clubs')->whereRaw('id = ' . $_GET['club'])->whereRaw('org_id = 13')->whereRaw('deletedAt is null')->first();
+            $foundClub = DB::table('ua_mst_clubs')->whereRaw('id = ' . $_GET['club'])->whereRaw('org_id = 15')->whereRaw('deletedAt is null')->first();
             if (isset($foundClub)) {
-                $club = DB::table('ua_mst_clubs')->whereRaw('id = ' . $_GET['club'])->whereRaw('org_id = 13')->whereRaw('deletedAt is null and is_deleted = 0')->get();
+                $club = DB::table('ua_mst_clubs')->whereRaw('id = ' . $_GET['club'])->whereRaw('org_id = 15')->whereRaw('deletedAt is null and is_deleted = 0')->get();
                 $withClub = true;
             } else {
-                $club = DB::table('ua_mst_clubs')->whereRaw('org_id = 13')->whereRaw('deletedAt is null and is_deleted = 0')->get();
+                $club = DB::table('ua_mst_clubs')->whereRaw('org_id = 15')->whereRaw('deletedAt is null and is_deleted = 0')->get();
             }
         } else {
-            $club = DB::table('ua_mst_clubs')->whereRaw('org_id = 13')->whereRaw('deletedAt is null and is_deleted = 0')->get();
+            $club = DB::table('ua_mst_clubs')->whereRaw('org_id = 15')->whereRaw('deletedAt is null and is_deleted = 0')->get();
         }
 
         return view('falcon.index', compact('club', 'withClub'));

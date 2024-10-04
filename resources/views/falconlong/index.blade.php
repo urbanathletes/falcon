@@ -154,9 +154,11 @@
                         </div>
                         @endif
 
-                        <form method="POST" id="signup-form" class="signup-form">
+                        <!-- <form method="POST" id="signup-form" class="signup-form"> -->
+                        <form action="{{ route('falconlong.checkout') }}" method="POST">
                             {{ csrf_field() }}
-                            <h2 class="form-title">7 days special price And get<br>free heart rate monitor
+                            <h2 class="form-title">Come join us and connect
+                                with the community
                             </h2>
                             <div class="form-group">
                                 <label for="full_name" class="normal" style="font-weight: 600;margin-left: 5px;color:#ffffff;">Nama
@@ -194,7 +196,7 @@
                                 </select> -->
                                 <select class="form-select" id="club_id" name="club_id" data-placeholder="Pilih club" <?= ($withClub ? "disabled" : "readonly") ?>>
                                     <?php foreach ($club as $v) {
-                                        if ($v->id == 16) { ?>
+                                        if ($v->id == 13) { ?>
                                             <option value="<?= $v->id ?>" <?= ($v->is_active == 0 ? "disabled" : "") ?>>
                                                 <?= $v->name ?>
                                                 <?= ($v->is_active == 0 ? "<span style='color:red; font-size:10px;'> (Coming Soon)</span>" : "") ?>
