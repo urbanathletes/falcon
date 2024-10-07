@@ -6,9 +6,52 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use App\Models\Lead;
+use Illuminate\Support\Facades\Auth;
+
 
 class PromoFalconLongController extends Controller
 {
+    public function login(Request $request)
+    {
+        // Validasi permintaan
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        // Kirim permintaan POST ke API untuk login
+        $response = Http::withHeaders([
+            'Content-Type' => 'application/json',
+            'Authorization' => 'Basic some_base64_encrypted_key', // Ganti dengan kunci yang sesuai
+        ])->post($this->getUrl('auth/signin'), [
+            'email' => $request->email,
+            'password' => $request->password,
+        ]);
+
+        // Periksa apakah permintaan berhasil
+        if ($response->successful()) {
+            // Mendapatkan data pengguna dari respons API
+            $data = $response->json();
+
+            // Simpan informasi pengguna ke session jika diperlukan
+            session(['user' => $data]);
+
+            // Redirect ke falconlong.index setelah login berhasil
+            return redirect()->intended(route('falconlong.index'))
+                ->with('success', 'You are logged in successfully.');
+        }
+
+        // Jika login gagal, kembalikan pesan kesalahan
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ]);
+    }
+
+    public function showLoginForm()
+    {
+        return view('falconlong.login'); // Return the login view
+    }
+
     public function index()
     {
         $clubId = "";
@@ -52,7 +95,7 @@ class PromoFalconLongController extends Controller
             ->select('id', 'name', 'price', 'month')
             ->where('org_id', 15)
             ->whereNull('deletedAt')
-            ->whereIn('id', [1475, 1476, 1477, 1478, 1479])
+            ->whereIn('id', [860, 861, 862, 863, 864])
             ->get();
         return view('falconlong.packages', compact('packages'));
     }
@@ -77,26 +120,26 @@ class PromoFalconLongController extends Controller
     public function selectPackage(Request $request)
     {
         $request->validate([
-            'package_id' => 'required|in:1475,1476,1477,1478,1479',
+            'package_id' => 'required|in:860,861,862,863,864',
         ]);
 
         session(['selected_package_id' => $request->input('package_id')]);
 
         // return redirect()->route('falconlong.checkout');
-        
+
         return redirect()->route('falconlong.showCheckoutForm');
     }
-    
+
     public function showCheckoutForm()
     {
         // Ambil package_id dari session
         $packageId = session('selected_package_id');
         $userInfo = session('user_info'); // Pastikan user info juga tersedia di session
-    
+
         if (!$packageId || !$userInfo) {
             return redirect()->route('falconlong.packages')->with('error', 'Please complete the previous steps.');
         }
-    
+
         // Tampilkan halaman dengan form POST otomatis
         return view('falconlong.auto-checkout-form', [
             'packageId' => $packageId,
@@ -141,7 +184,7 @@ class PromoFalconLongController extends Controller
                     'name' => $userInfo['name'],
                     'email' => $userInfo['email'],
                     'phone' => $userInfo['phone'],
-                    'club_id' =>env('CLUB_ID'),
+                    'club_id' => env('CLUB_ID'),
                     'source' => 'website',
                     'type_promo' => 'presale_falcon',
                     'sales_id' => '232',
@@ -196,7 +239,7 @@ class PromoFalconLongController extends Controller
             'createdAt' => now(),
             'updatedAt' => now(),
         ]);
-        
+
         $packageMembership = DB::table('ua_package_memberships as a')
             ->selectRaw('a.*, c.name as shift_name')
             ->join('ua_mst_shifts as c', 'c.id', '=', 'a.shift_id')
@@ -226,7 +269,7 @@ class PromoFalconLongController extends Controller
 
         // $jsonData = $response->json();
         // $data = $jsonData['data'] ?? [];
-         $jsonData = $response->json();
+        $jsonData = $response->json();
         $data = isset($jsonData['data']) ? $jsonData['data'] : [];
         $salesData = $response->json();
         $salesList = [];
@@ -237,11 +280,11 @@ class PromoFalconLongController extends Controller
                 }
             };*/
         }
-        
-    return view('falconlong.checkout', compact('packageMembership', 'leadsId', 'data', 'salesList'));
+
+        return view('falconlong.checkout', compact('packageMembership', 'leadsId', 'data', 'salesList'));
     }
-    
-      // Fungsi untuk menentukan URL berdasarkan environment
+
+    // Fungsi untuk menentukan URL berdasarkan environment
     private function getUrl($key = NULL)
     {
         $server = env('APP_ENV');
@@ -301,11 +344,11 @@ class PromoFalconLongController extends Controller
         if ($response->failed()) {
             return back()->with('error', 'Failed to process the order.');
         }
-       
+
         // Ambil data dari respons API
         $jsonData = $response->json();
         $data = $jsonData['data'] ?? [];
-        
+
         // Pastikan bahwa URL invoice Xendit tersedia dalam respons
         if (isset($data['xendit_invoice_url'])) {
             $url = $data['xendit_invoice_url'];
@@ -314,5 +357,4 @@ class PromoFalconLongController extends Controller
             return back()->with('error', 'Failed to retrieve the invoice URL.');
         }
     }
-
 }

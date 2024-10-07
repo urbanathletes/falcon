@@ -42,6 +42,10 @@ Route::post('/order', [PromoFalconController::class, 'order']);
 // Route::resource('/sales', PromoFalconLongController::class);
 // Route::post('/order', [PromoFalconLongController::class, 'order']);
 
+Route::get('/login', [PromoFalconLongController::class, 'showLoginForm'])->name('login.form');
+
+Route::post('/login', [PromoFalconLongController::class, 'login'])->name('login');
+
 // Show the personal info form (step 1)
 Route::get('/sales', [PromoFalconLongController::class, 'showInfoForm'])->name('falconlong.info');
 
