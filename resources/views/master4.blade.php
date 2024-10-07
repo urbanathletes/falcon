@@ -9,6 +9,7 @@
     <link rel="icon" href="{{ URL::asset('assets/img/falconfavicon.png') }}">
     <link rel="stylesheet" href="{{ URL::asset('assets/css/bootstrap/bootstrap.css') }}" />
     <link rel="stylesheet" href="{{ URL::asset('assets/css/style-form.css') }}" />
+    <link rel="stylesheet" href="{{ URL::asset('assets/refferal/css/style.css') }}" />
     <link rel="stylesheet" href="{{ URL::asset('assets/fonts/material-icon/css/material-design-iconic-font.min.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('assets/font-awesome/all.css') }}">
     <script src="{{ URL::asset('assets/vendor/jquery/jquery.min.js') }}"></script>

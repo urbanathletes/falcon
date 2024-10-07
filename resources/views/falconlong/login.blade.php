@@ -4,6 +4,10 @@
 <style>
     /* Pastikan elemen .login-background mencakup seluruh layar */
     .login-background {
+        background: url('path-to-your-image.jpg') no-repeat center center;
+        /* Atau ganti dengan warna */
+        background-size: cover;
+        /* Buat gambar memenuhi seluruh background */
         height: 85vh;
         /* Membuat tinggi background 100% dari viewport */
     }
